@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.page-container {
+  @apply w-full min-h-screen flex flex-row;
+}
+
+.aside {
+  @apply bg-amber-200 w-80 border-l transition-all duration-500 translate-x-full fixed right-0 top-0 bottom-0 lg:static lg:w-0 lg:h-screen lg:translate-0
+}
+
+.aside:has(.aside-content) {
+  @apply translate-0 lg:w-80;
+}

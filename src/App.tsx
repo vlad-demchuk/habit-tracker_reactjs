@@ -1,20 +1,12 @@
-import '@/App.css';
-import { HabitTracker, Streak } from '@/components';
+import AppRouter from '@/routes/AppRouter.tsx';
 
-function App() {
-  return (
-    <div className="page-container">
-      <main className="p-4 grow">
-        <HabitTracker />
-        <Streak />
-      </main>
+import '@/styles/global.css';
 
-      <aside
-        id="aside"
-        className="aside"
-      />
-    </div>
-  );
-}
+/**
+ * Main application component
+ */
+const App = () => {
+  return <AppRouter />;
+};
 
 export default App;

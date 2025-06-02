@@ -1,10 +1,13 @@
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { useEffect, useRef } from 'react';
-import closeIcon from '@/assets/close-icon.svg';
+
+import { CloseButton } from '@/components';
+
 import { SidebarProps } from '@/types/sidebar.ts';
 
 export const Sidebar = ({ isOpen, onClose, title, children }: SidebarProps) => {
   const containerRef = useRef<HTMLElement | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     let container = document.getElementById('aside');
@@ -17,6 +20,7 @@ export const Sidebar = ({ isOpen, onClose, title, children }: SidebarProps) => {
     }
 
     containerRef.current = container;
+    setIsMounted(true);
 
     return () => {
       if (!document.getElementById('aside')) {
@@ -25,7 +29,7 @@ export const Sidebar = ({ isOpen, onClose, title, children }: SidebarProps) => {
     };
   }, []);
 
-  if (!containerRef.current || !isOpen) {
+  if (!isMounted || !containerRef.current || !isOpen) {
     return null;
   }
 
@@ -33,21 +37,12 @@ export const Sidebar = ({ isOpen, onClose, title, children }: SidebarProps) => {
     <div className="aside-content-wrapper p-6">
       <header className="flex justify-between mb-3">
         <h3 className="font-semibold text-3xl">{title}</h3>
-        <button onClick={onClose}>
-          <img
-            className="cursor-pointer hover:scale-125 transition-transform"
-            src={closeIcon}
-            alt="Close"
-          />
-        </button>
+        <CloseButton onClick={onClose} />
       </header>
 
       <section className="aside-content">{children}</section>
     </div>
   );
 
-  return createPortal(
-    content,
-    containerRef.current,
-  );
+  return createPortal(content, containerRef.current);
 };

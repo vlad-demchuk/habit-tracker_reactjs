@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@layer components {
+  .page-container {
+    @apply flex min-h-screen w-full flex-row justify-center bg-gray-100;
+  }
+
+  .aside {
+    @apply fixed top-0 right-0 bottom-0 w-80 translate-x-full overflow-y-auto bg-white transition-all duration-500 lg:static lg:h-screen lg:w-0 lg:translate-x-0;
+  }
+
+  .aside:has(.aside-content) {
+    @apply translate-x-0 border-l border-l-gray-400 lg:w-80;
+  }
+}
+
+@theme {
+  --animate-fadein: fadein 1s ease-in-out infinite;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

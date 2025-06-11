@@ -4,18 +4,34 @@ import { CloseButton } from '@/components';
 
 import { ModalProps } from '@/types/modal.ts';
 
-// TODO: use code splitting
 export const Modal = ({ isOpen, closeModal, title, children }: ModalProps) => {
   const ref = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
-    // TODO: replace with useImperativeHandle
     if (isOpen) {
       ref.current?.showModal();
     } else {
       ref.current?.close();
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        closeModal();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, closeModal]);
 
   return (
     <dialog

@@ -15,7 +15,7 @@ interface HabitFormData {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
+const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
   const [formData, setFormData] = useState<HabitFormData>({
     title: '',
     description: '',
@@ -74,3 +74,5 @@ export const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
     </Modal>
   );
 };
+
+export default AddFormModal;

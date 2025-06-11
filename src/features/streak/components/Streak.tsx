@@ -1,12 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { clsx } from 'clsx';
+
+import { formatWeekDays } from '@/utils/dates.ts';
+
+import streakDataMock from '@/data/mocks/streak.json';
 
 import expandIcon from '@/assets/expand-icon.svg';
 import fireIcon from '@/assets/fire-icon.svg';
 
+import { Streak as IStreak } from '@/features/streak/types';
+
 export const Streak = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [streakData, setStreakData] = useState<IStreak | null>(null);
+
+  const { daysCount = 0, weekDays = [] } = streakData ?? {};
+
+  const formattedWeekDays = formatWeekDays(weekDays);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setStreakData(streakDataMock);
+    }, 2000);
+  }, []);
 
   return (
     <section className="mb-2 shadow-xl bg-white rounded-lg">
@@ -21,19 +38,25 @@ export const Streak = () => {
             </p>
           </div>
 
-          <span className="text-3xl font-[900] text-indigo-700">15 days </span>
+          {daysCount > 0 && (
+            <span className="text-3xl font-[900] text-indigo-700">{`${daysCount} days`}</span>
+          )}
         </div>
 
-        <button onClick={() => setIsExpanded(!isExpanded)}>
-          <img
-            className={clsx(
-              'cursor-pointer hover:scale-125 transition-transform',
-              isExpanded && 'rotate-180',
-            )}
-            src={expandIcon}
-            alt="Close"
-          />
-        </button>
+        {streakData ? (
+          <button onClick={() => setIsExpanded(!isExpanded)}>
+            <img
+              className={clsx(
+                'cursor-pointer hover:scale-125 transition-transform',
+                isExpanded && 'rotate-180',
+              )}
+              src={expandIcon}
+              alt="Close"
+            />
+          </button>
+        ) : (
+          'Loading...'
+        )}
       </header>
 
       <div className="relative border-t border-t-gray-200 overflow-hidden">
@@ -54,43 +77,27 @@ export const Streak = () => {
             </div>
 
             <div className="p-6 flex justify-between">
-              <div className="relative flex flex-col place-items-center">
+              {formattedWeekDays.map(({ label, completed, isPast }) => (
                 <div
-                  className={clsx(
-                    'relative flex place-items-center size-10 bg-indigo-700 rounded-full',
-                  )}
+                  key={label}
+                  className="relative flex flex-col place-items-center"
                 >
-                  <span className="absolute left-[50%] top-[50%] -translate-1/2 text-xl">
-                    🔥
-                  </span>
-                </div>
+                  <div
+                    className={clsx(
+                      'relative flex place-items-center size-10 rounded-full',
+                      isPast ? 'bg-indigo-700' : 'bg-gray-400',
+                    )}
+                  >
+                    {completed && (
+                      <span className="absolute left-[50%] top-[50%] -translate-1/2 text-xl">
+                        🔥
+                      </span>
+                    )}
+                  </div>
 
-                <p>Mon</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-indigo-700 rounded-full')} />
-                <p>Tue</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-indigo-700 rounded-full')} />
-                <p>Wed</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-gray-400 rounded-full')} />
-                <p>Thu</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-gray-400 rounded-full')} />
-                <p>Fri</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-gray-400 rounded-full')} />
-                <p>Sat</p>
-              </div>
-              <div className="flex flex-col place-items-center">
-                <div className={clsx('size-10 bg-gray-400 rounded-full')} />
-                <p>Sun</p>
-              </div>
+                  <p>{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

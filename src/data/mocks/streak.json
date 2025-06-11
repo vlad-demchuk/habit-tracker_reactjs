@@ -1,0 +1,34 @@
+{
+  "daysCount": 2,
+  "weekDays": [
+    {
+      "label": "Mon",
+      "completed": false
+    },
+    {
+      "label": "Tue",
+      "completed": true
+    },
+    {
+      "label": "Wed",
+      "completed": false
+    },
+    {
+      "label": "Thu",
+      "completed": false
+    },
+    {
+      "label": "Fri",
+      "completed": false
+    },
+    {
+      "label": "Sat",
+      "completed": false
+    },
+    {
+      "label": "Sun",
+      "completed": false
+    }
+  ],
+  "isCompletedToday": false
+}

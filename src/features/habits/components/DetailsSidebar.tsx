@@ -3,7 +3,7 @@ import { Sidebar } from '@/components/ui/Sidebar.tsx';
 
 import { HabitDetailsSidebarProps } from '@/types/sidebar.ts';
 
-export const DetailsSidebar = ({
+const DetailsSidebar = ({
   isOpen,
   onClose,
   title,
@@ -43,3 +43,5 @@ export const DetailsSidebar = ({
     </Sidebar>
   );
 };
+
+export default DetailsSidebar;

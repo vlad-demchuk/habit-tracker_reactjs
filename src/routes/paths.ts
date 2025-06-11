@@ -8,12 +8,19 @@
 export const routePaths = {
   // Main routes
   home: '/',
+  addHabitModal: '/new',
 
   // Fallback routes
   notFound: '*',
-
-  // Add more route paths here as needed
 } as const;
+
+export const searchParamsKeys = {
+  modal: 'modal',
+};
+
+export const searchParamsValues = {
+  newHabit: 'new-habit',
+};
 
 // Type for route keys - useful for type safety
 export type RoutePathsKeys = keyof typeof routePaths;

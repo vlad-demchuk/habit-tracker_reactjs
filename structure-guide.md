@@ -43,7 +43,7 @@ Contains reusable components that are shared across multiple features or pages.
 - `ui/`: Contains primitive UI components like buttons, inputs, cards, etc.
 - Components should be focused on presentation rather than business logic
 - Each component should have its own folder with the component file, styles, and tests
-- Export components as default exports, and re-export them as named exports from an index.tsx file for better autocompletion
+- Export components as default exports, and re-export them as named exports from an index.ts file for better autocompletion
 
 Example:
 
@@ -51,7 +51,7 @@ Example:
 // Good
 const Button = () => {...}
 export default Button;
-// index.tsx
+// index.ts
 export { default as Button } from './Button';
 ```
 

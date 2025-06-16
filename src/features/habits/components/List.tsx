@@ -1,12 +1,27 @@
+import { Habit } from '@/features/habits/types';
+
 import { ListItem } from './ListItem';
 
-const habits = ['Habit 1', 'Habit 2', 'Habit 3'];
+interface Props {
+  isLoading: boolean;
+  isError: string;
+  habits: Habit[];
+  onHabitSelect: (habit: Habit) => void;
+}
 
-export const List = () => {
+export const List = ({ isLoading, isError, habits, onHabitSelect }: Props) => {
+  if (isLoading) {
+    return 'Loading...';
+  }
+
+  if (isError) {
+    return 'Something went wrong';
+  }
+
   return (
     <section className="grid gap-y-2">
       {habits.map((habit) => (
-        <ListItem key={habit} title={habit} />
+        <ListItem key={habit.id} habit={habit} onHabitSelect={onHabitSelect} />
       ))}
     </section>
   );

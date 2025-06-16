@@ -14,7 +14,6 @@ interface HabitFormData {
   description: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
   const [formData, setFormData] = useState<HabitFormData>({
     title: '',
@@ -38,7 +37,13 @@ const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
 
   return (
     <Modal isOpen={isOpen} closeModal={onClose} title="Add New Habit">
-      <form className="w-[60vw] flex flex-col gap-4">
+      <form
+        className="w-[60vw] flex flex-col gap-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit();
+        }}
+      >
         <div className="flex flex-col">
           <label htmlFor="title">
             Title<span className="text-red-500">*</span>
@@ -63,7 +68,12 @@ const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
         </div>
 
         <section className="flex gap-2 justify-end">
-          <Button variant="destructive" onClick={() => console.log('edit')}>
+          <Button
+            variant="destructive"
+            onClick={() => {
+              onClose();
+            }}
+          >
             Cancel
           </Button>
           <Button variant="primary" onClick={() => console.log('del')}>

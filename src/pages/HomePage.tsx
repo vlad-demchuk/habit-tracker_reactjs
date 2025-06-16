@@ -1,12 +1,16 @@
-import { lazy, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router';
 
 import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
 
 import { Header } from '@/components';
 
+import habitsMock from '@/data/mocks/habit.json';
+
 import { List } from '@/features/habits/components';
 import { Streak } from '@/features/streak/components';
+
+import { Habit } from '@/features/habits/types';
 
 const AddFormModal = lazy(
   () => import('@/features/habits/components/AddFormModal.tsx'),
@@ -19,8 +23,13 @@ const DetailsSidebar = lazy(
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // const [habits, setHabits] = useState([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [habits, setHabits] = useState<Habit[]>([]);
+  const [isHabitsLoading, setIsHabitsLoading] = useState(false);
+  const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
+
+  const handleHabitSelect = (habit: Habit) => {
+    setSelectedHabit(habit);
+  };
 
   const isAdding =
     searchParams.get(searchParamsKeys.modal) === searchParamsValues.newHabit;
@@ -33,13 +42,19 @@ const HomePage = () => {
 
   const handleAddFormClose = () => {
     const newSearchParams = new URLSearchParams(searchParams);
-
     newSearchParams.delete(searchParamsKeys.modal);
-
     setSearchParams(newSearchParams.toString());
   };
 
   const handleAddSubmit = () => ({});
+
+  useEffect(() => {
+    setIsHabitsLoading(true);
+    setTimeout(() => {
+      setHabits(habitsMock);
+      setIsHabitsLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <>
@@ -47,7 +62,12 @@ const HomePage = () => {
 
       <Streak />
 
-      <List />
+      <List
+        isLoading={isHabitsLoading}
+        isError={''}
+        habits={habits}
+        onHabitSelect={handleHabitSelect}
+      />
 
       <AddFormModal
         isOpen={isAdding}
@@ -57,14 +77,11 @@ const HomePage = () => {
 
       {/* Sidebar */}
       <DetailsSidebar
-        isOpen={isSidebarOpen}
-        onClose={() => setIsSidebarOpen(false)}
-        title="Sidebar"
-        createdAt="01.01.2025"
-        streak="5 days"
-      >
-        Content
-      </DetailsSidebar>
+        isOpen={!!selectedHabit}
+        title={selectedHabit?.title}
+        selectedHabit={selectedHabit}
+        onClose={() => setSelectedHabit(null)}
+      />
     </>
   );
 };

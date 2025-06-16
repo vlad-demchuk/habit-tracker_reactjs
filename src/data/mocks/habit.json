@@ -1,0 +1,47 @@
+[
+  {
+    "id": "habit-1",
+    "userId": "user-1",
+    "title": "Drink Water",
+    "description": "Drink at least 2 liters of water daily",
+    "createdAt": "2024-12-01T08:30:00.000Z",
+    "lastCompletedDate": "2025-06-07T09:00:00.000Z",
+    "streak": 5
+  },
+  {
+    "id": "habit-2",
+    "userId": "user-1",
+    "title": "Morning Workout",
+    "description": "15 minutes of stretching and core",
+    "createdAt": "2025-01-15T07:00:00.000Z",
+    "lastCompletedDate": "2025-06-07T07:30:00.000Z",
+    "streak": 1
+  },
+  {
+    "id": "habit-3",
+    "userId": "user-1",
+    "title": "Read a Book",
+    "description": "Read 10 pages of any book",
+    "createdAt": "2025-03-10T12:45:00.000Z",
+    "lastCompletedDate": null,
+    "streak": 0
+  },
+  {
+    "id": "habit-4",
+    "userId": "user-1",
+    "title": "Meditation",
+    "description": null,
+    "createdAt": "2025-05-01T06:15:00.000Z",
+    "lastCompletedDate": "2025-06-07T06:30:00.000Z",
+    "streak": 2
+  },
+  {
+    "id": "habit-5",
+    "userId": "user-1",
+    "title": "Write Journal",
+    "description": "Reflect on your day for 5 minutes",
+    "createdAt": "2025-02-20T22:00:00.000Z",
+    "lastCompletedDate": "2025-06-05T21:59:00.000Z",
+    "streak": 0
+  }
+]

@@ -1,6 +1,18 @@
 import { Button } from '@/components';
 
-export const ListItem = ({ title }: { title: string }) => {
+import { Habit } from '@/features/habits/types';
+import { getProgressBarValue } from '@/features/habits/utils';
+
+interface Props {
+  habit: Habit;
+  onHabitSelect: (habit: Habit) => void;
+}
+
+export const ListItem = ({ habit, onHabitSelect }: Props) => {
+  const { title, streak } = habit;
+
+  const progress = getProgressBarValue(streak);
+
   return (
     <article className="p-6 md:pb-10 grid gap-y-4 border-1 border-gray-300 rounded-lg shadow-md bg-white">
       <header className="flex justify-between">
@@ -13,14 +25,22 @@ export const ListItem = ({ title }: { title: string }) => {
 
         <div className="flex gap-1">
           <Button className="rounded-full size-9">✔</Button>
-          <Button className="rounded-full flex items-center justify-center size-9">
+          <Button
+            onClick={() => onHabitSelect(habit)}
+            className="rounded-full flex items-center justify-center size-9"
+          >
             ...
           </Button>
         </div>
       </header>
 
       <div>
-        <div className="mb-1 w-full h-1 bg-gray-200 rounded-full" />
+        <div className="mb-1 w-full h-1 bg-gray-200 rounded-full">
+          <div
+            className="h-full bg-indigo-700 rounded-full"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
 
         <div className="flex justify-between">
           <div className="flex gap-1 place-items-center">

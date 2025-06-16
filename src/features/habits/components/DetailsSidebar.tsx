@@ -7,16 +7,17 @@ const DetailsSidebar = ({
   isOpen,
   onClose,
   title,
-  createdAt,
-  streak,
+  selectedHabit,
   children,
 }: HabitDetailsSidebarProps) => {
+  const { description, streak, createdAt } = selectedHabit ?? {};
+
   return (
     <Sidebar isOpen={isOpen} onClose={onClose} title={title}>
       <div className="grid gap-y-4">
         <section>
           <h4 className="uppercase text-gray-500 text-sm">Description</h4>
-          <p className="text-base">Habit description</p>
+          <p className="text-base">{description}</p>
         </section>
 
         <section>

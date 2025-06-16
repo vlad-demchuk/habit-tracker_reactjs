@@ -5,7 +5,12 @@ import { CloseButton } from '@/components';
 
 import { SidebarProps } from '@/types/sidebar.ts';
 
-export const Sidebar = ({ isOpen, onClose, title, children }: SidebarProps) => {
+export const Sidebar = ({
+  isOpen,
+  onClose,
+  title = 'Title',
+  children,
+}: SidebarProps) => {
   const containerRef = useRef<HTMLElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 

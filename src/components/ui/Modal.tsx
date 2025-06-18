@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import { CloseButton } from '@/components';
 
-import { ModalProps } from '@/types/modal.ts';
+import { ModalProps } from '@/types/modal.types.ts';
 
 export const Modal = ({ isOpen, closeModal, title, children }: ModalProps) => {
   const ref = useRef<HTMLDialogElement | null>(null);

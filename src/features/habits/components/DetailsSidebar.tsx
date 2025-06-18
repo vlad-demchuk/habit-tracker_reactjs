@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/Button.tsx';
 import { Sidebar } from '@/components/ui/Sidebar.tsx';
 
-import { HabitDetailsSidebarProps } from '@/types/sidebar.ts';
+import { HabitDetailsSidebarProps } from '@/types/sidebar.types.ts';
 
 const DetailsSidebar = ({
   isOpen,

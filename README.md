@@ -24,17 +24,20 @@ A modern, user-friendly habit tracking application built with React and TypeScri
 ## 🛠️ Installation
 
 1. Clone the repository:
+
 ```bash
 git clone [your-repo-url]
 cd habit-tracker_reactjs
 ```
 
 2. Install dependencies using pnpm:
+
 ```bash
 pnpm install
 ```
 
 3. Start the development server:
+
 ```bash
 pnpm dev
 ```
@@ -79,4 +82,3 @@ src/
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-

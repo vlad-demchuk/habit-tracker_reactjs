@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import { CloseButton } from '@/components';
 
-import { SidebarProps } from '@/types/sidebar.ts';
+import { SidebarProps } from '@/types/sidebar.types.ts';
 
 export const Sidebar = ({
   isOpen,

@@ -1,19 +1,17 @@
-import { lazy, useEffect, useState } from 'react';
+import { lazy, useState } from 'react';
 import { useSearchParams } from 'react-router';
 
 import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
 
 import { Header } from '@/components';
 
-import habitsMock from '@/data/mocks/habit.json';
-
-import { List } from '@/features/habits/components';
+import { Habits } from '@/features/habits/components';
 import { Streak } from '@/features/streak/components';
 
 import { Habit } from '@/features/habits/types';
 
 const AddFormModal = lazy(
-  () => import('@/features/habits/components/AddFormModal.tsx'),
+  () => import('@/features/habits/components/AddFormModal'),
 );
 
 const DetailsSidebar = lazy(
@@ -23,8 +21,7 @@ const DetailsSidebar = lazy(
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [habits, setHabits] = useState<Habit[]>([]);
-  const [isHabitsLoading, setIsHabitsLoading] = useState(false);
+  // TODO: Move selectedHabit to zustand store to avoid props drilling
   const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
 
   const handleHabitSelect = (habit: Habit) => {
@@ -48,26 +45,13 @@ const HomePage = () => {
 
   const handleAddSubmit = () => ({});
 
-  useEffect(() => {
-    setIsHabitsLoading(true);
-    setTimeout(() => {
-      setHabits(habitsMock);
-      setIsHabitsLoading(false);
-    }, 2000);
-  }, []);
-
   return (
     <>
       <Header onAddClick={handleAddFormOpen} />
 
       <Streak />
 
-      <List
-        isLoading={isHabitsLoading}
-        isError={''}
-        habits={habits}
-        onHabitSelect={handleHabitSelect}
-      />
+      <Habits onHabitSelect={handleHabitSelect} />
 
       <AddFormModal
         isOpen={isAdding}

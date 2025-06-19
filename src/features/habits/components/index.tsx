@@ -1,1 +1,1 @@
-export { List } from './List.tsx';
+export { Habits } from './Habits';

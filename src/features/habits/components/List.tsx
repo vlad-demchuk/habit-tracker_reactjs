@@ -4,7 +4,7 @@ import { ListItem } from './ListItem';
 
 interface Props {
   isLoading: boolean;
-  isError: string;
+  isError: boolean;
   habits: Habit[];
   onHabitSelect: (habit: Habit) => void;
 }

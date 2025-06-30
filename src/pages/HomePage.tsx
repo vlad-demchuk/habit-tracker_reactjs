@@ -1,4 +1,4 @@
-import { lazy, useState } from 'react';
+import { lazy } from 'react';
 import { useSearchParams } from 'react-router';
 
 import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
@@ -8,7 +8,7 @@ import { Header } from '@/components';
 import { Habits } from '@/features/habits/components';
 import { Streak } from '@/features/streak/components';
 
-import { Habit } from '@/features/habits/types';
+import { useSelectedHabitStore } from '@/features/habits/state/store';
 
 const AddFormModal = lazy(
   () => import('@/features/habits/components/AddFormModal'),
@@ -21,12 +21,8 @@ const DetailsSidebar = lazy(
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // TODO: Move selectedHabit to zustand store to avoid props drilling
-  const [selectedHabit, setSelectedHabit] = useState<Habit | null>(null);
-
-  const handleHabitSelect = (habit: Habit) => {
-    setSelectedHabit(habit);
-  };
+  const selectedHabit = useSelectedHabitStore((state) => state.selectedHabit);
+  const unselectHabit = useSelectedHabitStore((state) => state.unselectHabit);
 
   const isAdding =
     searchParams.get(searchParamsKeys.modal) === searchParamsValues.newHabit;
@@ -51,7 +47,7 @@ const HomePage = () => {
 
       <Streak />
 
-      <Habits onHabitSelect={handleHabitSelect} />
+      <Habits />
 
       <AddFormModal
         isOpen={isAdding}
@@ -64,7 +60,7 @@ const HomePage = () => {
         isOpen={!!selectedHabit}
         title={selectedHabit?.title}
         selectedHabit={selectedHabit}
-        onClose={() => setSelectedHabit(null)}
+        onClose={() => unselectHabit()}
       />
     </>
   );

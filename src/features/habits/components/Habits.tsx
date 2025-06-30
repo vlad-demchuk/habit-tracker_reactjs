@@ -1,26 +1,26 @@
 import { useHabits } from '@/features/habits/hooks';
 
-import { Habit } from '@/features/habits/types';
+import { useSelectedHabitStore } from '@/features/habits/state/store';
 
 import { List } from './List';
 
-interface Props {
-  onHabitSelect: (habit: Habit) => void;
-}
-
-export const Habits = ({ onHabitSelect }: Props) => {
+export const Habits = () => {
   const {
     isPending: isHabitsLoading,
     isError: isHabitsError,
     data: habits,
   } = useHabits();
 
+  const setSelectedHabit = useSelectedHabitStore(
+    (state) => state.setSelectedHabit,
+  );
+
   return (
     <List
       isLoading={isHabitsLoading}
       isError={isHabitsError}
       habits={habits ?? []}
-      onHabitSelect={onHabitSelect}
+      onHabitSelect={setSelectedHabit}
     />
   );
 };

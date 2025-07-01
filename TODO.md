@@ -12,6 +12,7 @@
 ## 🧩 Features
 
 ### Habits Feature
+
 - [ ] Implement habit categories/tags
 - [ ] Add habit priority levels
 - [ ] Create habit templates for quick addition
@@ -19,12 +20,14 @@
 - [ ] Add notes/journal capability to habits
 
 ### Streak Feature
+
 - [ ] Enhance streak visualization
 - [ ] Add streak milestones and celebrations
 - [ ] Implement "grace period" for missed days
 - [ ] Create weekly/monthly streak summaries
 
 ### New Features
+
 - [ ] Authentication system
   - [ ] User registration and login
   - [ ] Social login options

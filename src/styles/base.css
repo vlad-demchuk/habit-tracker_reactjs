@@ -1,5 +1,5 @@
 @theme {
-  --font-manrope: "Manrope", system-ui, sans-serif;
+  --font-manrope: 'Manrope', system-ui, sans-serif;
 
   --animate-fadein: fadein 1s ease-in-out infinite;
   @keyframes fadein {
@@ -16,7 +16,7 @@
   *,
   *::before,
   *::after {
-    @apply box-border m-0 p-0
+    @apply m-0 box-border p-0;
   }
 
   :root {
@@ -31,6 +31,6 @@
   }
 
   body {
-    @apply font-manrope antialiased text-base text-gray-950 min-w-80 min-h-screen;
+    @apply font-manrope min-h-screen min-w-80 text-base text-gray-950 antialiased;
   }
 }

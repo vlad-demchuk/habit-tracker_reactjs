@@ -2,22 +2,28 @@ import { useEffect, useState } from 'react';
 
 import { clsx } from 'clsx';
 
-import { formatWeekDays } from '@/utils/dates.ts';
-
 import streakDataMock from '@/data/mocks/streak.json';
 
-import expandIcon from '@/assets/expand-icon.svg';
-import fireIcon from '@/assets/fire-icon.svg';
+import { Card } from '@/features/streak/components/Card.tsx';
 
 import { Streak as IStreak } from '@/features/streak/types';
 
+import expandIcon from '../../../assets/expand-icon.svg';
+
 export const Streak = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [streakData, setStreakData] = useState<IStreak | null>(null);
 
-  const { daysCount = 0, weekDays = [] } = streakData ?? {};
+  const { daysCount = 0 } = streakData ?? {};
 
-  const formattedWeekDays = formatWeekDays(weekDays);
+  // const formattedWeekDays = formatWeekDays(weekDays);
+
+  const cardData = [
+    { id: 1, title: 'Current Streak', value: daysCount.toString() },
+    { id: 2, title: 'Highest Streak', value: '7' },
+  ];
+
+  const smCardData = [{ id: 3, title: 'Total Habits', value: '12' }];
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,22 +32,11 @@ export const Streak = () => {
   }, []);
 
   return (
-    <section className="mb-2 shadow-xl bg-white rounded-lg">
-      <header className="flex p-4 justify-between items-center">
-        <div className="flex items-center">
-          <img className="m-2" src={fireIcon} alt="Close" />
-
-          <div className="mr-4">
-            <h2 className=" text-2xl font-semibold">Daily Streak</h2>
-            <p className="text-balance text-gray-500">
-              Keep going! You&apos;re doing great!
-            </p>
-          </div>
-
-          {daysCount > 0 && (
-            <span className="text-3xl font-[900] text-indigo-700">{`${daysCount} days`}</span>
-          )}
-        </div>
+    <section className="mb-2 bg-white rounded-lg">
+      <header className="flex justify-between items-center">
+        <h2 className="flex items-center text-2xl font-semibold leading-6 tracking-normal">
+          Streaks
+        </h2>
 
         {streakData ? (
           <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -59,46 +54,28 @@ export const Streak = () => {
         )}
       </header>
 
-      <div className="relative border-t border-t-gray-200 overflow-hidden">
+      <div className="relative border-t-gray-200 overflow-hidden">
         <div
           className={clsx(
             'transition-all duration-500 ease-in-out origin-top',
             isExpanded
-              ? 'max-h-42 opacity-100 scale-y-100'
+              ? 'max-h-42 mt-4 opacity-100 scale-y-100'
               : 'max-h-0 opacity-0 scale-y-0',
           )}
         >
-          <div className="p-4">
-            <div className="mb-1 w-full h-6 bg-indigo-700 rounded-lg" />
+          <div className="flex justify-evenly gap-4">
+            {cardData.map((card) => (
+              <Card key={card.id} title={card.title} value={card.value} />
+            ))}
 
-            <div className="flex justify-between">
-              <span className="text-gray-500">0 Days</span>
-              <span className="text-gray-500">30 Days</span>
-            </div>
-
-            <div className="p-6 flex justify-between">
-              {formattedWeekDays.map(({ label, completed, isPast }) => (
-                <div
-                  key={label}
-                  className="relative flex flex-col place-items-center"
-                >
-                  <div
-                    className={clsx(
-                      'relative flex place-items-center size-10 rounded-full',
-                      isPast ? 'bg-indigo-700' : 'bg-gray-400',
-                    )}
-                  >
-                    {completed && (
-                      <span className="absolute left-[50%] top-[50%] -translate-1/2 text-xl">
-                        🔥
-                      </span>
-                    )}
-                  </div>
-
-                  <p>{label}</p>
-                </div>
-              ))}
-            </div>
+            {smCardData.map((card) => (
+              <Card
+                classname="hidden sm:block"
+                key={card.id}
+                title={card.title}
+                value={card.value}
+              />
+            ))}
           </div>
         </div>
       </div>

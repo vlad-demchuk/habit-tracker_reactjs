@@ -19,10 +19,10 @@ export const List = ({ isLoading, isError, habits, onHabitSelect }: Props) => {
   }
 
   return (
-    <section className="grid gap-y-2">
+    <>
       {habits.map((habit) => (
         <ListItem key={habit.id} habit={habit} onHabitSelect={onHabitSelect} />
       ))}
-    </section>
+    </>
   );
 };

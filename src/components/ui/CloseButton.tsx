@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react';
 
+import { IconButton } from '@/components';
+
 import closeIcon from '@/assets/close-icon.svg';
 
 export const CloseButton = ({
@@ -7,12 +9,12 @@ export const CloseButton = ({
   ...props
 }: ComponentPropsWithoutRef<'button'>) => {
   return (
-    <button {...props} onClick={onClick}>
+    <IconButton {...props} onClick={onClick}>
       <img
         className="cursor-pointer hover:scale-125 transition-transform"
         src={closeIcon}
         alt="Close"
       />
-    </button>
+    </IconButton>
   );
 };

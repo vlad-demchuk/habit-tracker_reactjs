@@ -9,7 +9,7 @@ const MainLayout = () => {
 
   return (
     <div className="page-container">
-      <main className="max-w-[95vw] md:max-w-[80vw] flex flex-col gap-4 p-4 grow">
+      <main className="max-w-screen md:max-w-[80vw] flex flex-col gap-4 p-4 grow">
         <Outlet />
       </main>
 

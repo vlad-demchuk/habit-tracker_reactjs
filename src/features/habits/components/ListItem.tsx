@@ -1,4 +1,4 @@
-import { Button } from '@/components';
+import { IconButton } from '@/components';
 
 import { Habit } from '@/features/habits/types';
 import { getProgressBarValue } from '@/features/habits/utils';
@@ -14,50 +14,42 @@ export const ListItem = ({ habit, onHabitSelect }: Props) => {
   const progress = getProgressBarValue(streak);
 
   return (
-    <article className="p-6 md:pb-10 grid gap-y-4 border-1 border-gray-300 rounded-lg shadow-md bg-white">
-      <header className="flex justify-between">
-        <div className="flex place-items-center gap-2">
-          <h4 className="text-xl font-semibold">{title}</h4>
-          <div className="px-2 border border-gray-300 rounded-full text-md text-black font-medium">
-            Chip
-          </div>
+    <article className="md:pb-10 flex justify-between items-center gap-y-2 rounded-lg bg-white">
+      <div className="flex grow items-center gap-4">
+        <div className="size-12 flex justify-center items-center bg-gray-100">
+          Icon
         </div>
 
-        <div className="flex gap-1">
-          <Button className="rounded-full size-9">✔</Button>
-          <Button
-            onClick={() => onHabitSelect(habit)}
-            className="rounded-full flex items-center justify-center size-9"
-          >
-            ...
-          </Button>
-        </div>
-      </header>
+        <div className="grow">
+          <h4 className="text-base font-medium">{title}</h4>
 
-      <div>
-        <div className="mb-1 w-full h-1 bg-gray-200 rounded-full">
-          <div
-            className="h-full bg-indigo-700 rounded-full"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+          <div>
+            <div className="mb-1 w-full h-1 bg-gray-200 rounded-full">
+              <div
+                className="h-full bg-black rounded-full"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
 
-        <div className="flex justify-between">
-          <div className="flex gap-1 place-items-center">
-            <div className="size-[8px] rounded-full bg-[#18181B]" />
-            <span className="text-sm text-gray-500 font-normal">7 days</span>
-          </div>
-
-          <div className="flex gap-1 place-items-center">
-            <div className="size-[8px] rounded-full bg-[#8B5CF6]" />
-            <span className="text-sm text-gray-500 font-normal">14 days</span>
-          </div>
-
-          <div className="flex gap-1 place-items-center">
-            <div className="size-[8px] rounded-full bg-[#3B82F6]" />
-            <span className="text-sm text-gray-500 font-normal">30 days</span>
+            <div className="flex justify-between">
+              <div className="flex gap-1 place-items-center">
+                <span className="text-sm text-gray-500 font-normal">
+                  7 days
+                </span>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex gap-1">
+        <IconButton className="rounded-full size-9">✔</IconButton>
+        <IconButton
+          onClick={() => onHabitSelect(habit)}
+          className="rounded-full flex items-center justify-center size-9"
+        >
+          ...
+        </IconButton>
       </div>
     </article>
   );

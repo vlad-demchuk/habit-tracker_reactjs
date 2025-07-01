@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @layer components {
   .page-container {
-    @apply flex min-h-screen w-full flex-row justify-center bg-gray-100;
+    @apply flex min-h-screen w-full flex-row justify-center;
   }
 
   .aside {
@@ -11,17 +11,5 @@
 
   .aside:has(.aside-content) {
     @apply translate-x-0 border-l border-l-gray-400 lg:w-80;
-  }
-}
-
-@theme {
-  --animate-fadein: fadein 1s ease-in-out infinite;
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 }

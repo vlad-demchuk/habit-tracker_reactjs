@@ -8,6 +8,7 @@
 - [ ] Create consistent component styling across the application
 - [ ] Enhance visual feedback for habit completion
 - [ ] Improve accessibility features
+- [ ] Improve UI components logic and appearance
 
 ## 🧩 Features
 

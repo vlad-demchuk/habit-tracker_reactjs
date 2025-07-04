@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 import { clsx } from 'clsx';
 
+import { IconButton } from '@/components';
+
 import streakDataMock from '@/data/mocks/streak.json';
 
 import { Card } from '@/features/streak/components/Card.tsx';
@@ -39,7 +41,7 @@ export const Streak = () => {
         </h2>
 
         {streakData ? (
-          <button onClick={() => setIsExpanded(!isExpanded)}>
+          <IconButton onClick={() => setIsExpanded(!isExpanded)}>
             <img
               className={clsx(
                 'cursor-pointer hover:scale-125 transition-transform',
@@ -48,7 +50,7 @@ export const Streak = () => {
               src={expandIcon}
               alt="Close"
             />
-          </button>
+          </IconButton>
         ) : (
           'Loading...'
         )}

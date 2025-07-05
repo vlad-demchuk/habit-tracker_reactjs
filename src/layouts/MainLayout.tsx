@@ -2,7 +2,7 @@ import { Outlet, useSearchParams } from 'react-router';
 
 import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
 
-import { Header, NavigationMenu } from '@/components';
+import { Header, NavigationMenuLg, NavigationMenuSm } from '@/components';
 
 const MainLayout = () => {
   // Use Route Protection if needed
@@ -19,18 +19,23 @@ const MainLayout = () => {
   };
 
   return (
-    <>
-      <Header onAddClick={handleAddFormOpen} />
-      <div className="page-container">
-        <main className="max-w-screen md:max-w-[80vw] flex flex-col gap-4 p-4 grow">
-          <Outlet />
-        </main>
+    <div className="block lg:grid grid-cols-12">
+      <NavigationMenuLg />
 
-        <aside id="aside" className="aside" />
-      </div>
+      <main className="col-[4/-1]">
+        <Header onAddClick={handleAddFormOpen} />
 
-      <NavigationMenu />
-    </>
+        <div className="page-container">
+          <div className="flex flex-col gap-4 p-4 grow">
+            <Outlet />
+          </div>
+
+          <aside id="aside" className="aside" />
+        </div>
+      </main>
+
+      <NavigationMenuSm />
+    </div>
   );
 };
 

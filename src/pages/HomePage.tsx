@@ -3,8 +3,6 @@ import { useSearchParams } from 'react-router';
 
 import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
 
-import { Header } from '@/components';
-
 import { Habits } from '@/features/habits/components';
 import { Streak } from '@/features/streak/components';
 
@@ -27,12 +25,6 @@ const HomePage = () => {
   const isAdding =
     searchParams.get(searchParamsKeys.modal) === searchParamsValues.newHabit;
 
-  const handleAddFormOpen = () => {
-    setSearchParams({
-      [searchParamsKeys.modal]: searchParamsValues.newHabit,
-    });
-  };
-
   const handleAddFormClose = () => {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.delete(searchParamsKeys.modal);
@@ -43,8 +35,6 @@ const HomePage = () => {
 
   return (
     <>
-      <Header onAddClick={handleAddFormOpen} />
-
       <Streak />
 
       <Habits />

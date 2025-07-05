@@ -9,6 +9,8 @@ export const routePaths = {
   // Main routes
   home: '/',
   addHabitModal: '/new',
+  history: '/history',
+  settings: '/settings',
 
   // Fallback routes
   notFound: '*',

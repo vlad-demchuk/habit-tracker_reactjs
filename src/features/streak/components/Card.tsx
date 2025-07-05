@@ -12,7 +12,7 @@ export const Card = ({ title, value, classname }: Props) => {
   return (
     <div
       className={twMerge(
-        'p-4 border border-gray-300 rounded-md basis-1/2 sm:basis-1/3 min-h-28 sm:min-h-30',
+        'p-4 border bg-white border-gray-300 rounded-md basis-1/2 sm:basis-1/3 min-h-28 sm:min-h-30',
         classname,
       )}
     >

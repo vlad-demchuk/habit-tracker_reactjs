@@ -34,7 +34,7 @@ export const Streak = () => {
   }, []);
 
   return (
-    <section className="mb-2 bg-white rounded-lg">
+    <section className="mb-2 bg-white lg:bg-gray-50 rounded-lg">
       <header className="flex justify-between items-center">
         <h2 className="flex items-center text-2xl font-semibold leading-6 tracking-normal">
           Streaks

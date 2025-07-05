@@ -10,7 +10,7 @@ export const NavigationMenuLg = () => {
         <Logo />
       </header>
 
-      <section className="p-2">
+      <section className="px-2 sticky top-15">
         <Menu menuItems={navigationConfig} />
       </section>
     </nav>

@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const Menu = ({ menuItems }: Props) => {
+  // TODO: Implement NavLink
   return (
     <ul className="flex justify-around lg:flex-col">
       {menuItems.map(({ id, title, href, icon }) => (

@@ -14,7 +14,7 @@ export const ListItem = ({ habit, onHabitSelect }: Props) => {
   const progress = getProgressBarValue(streak);
 
   return (
-    <article className="md:pb-10 flex justify-between items-center gap-y-2 rounded-lg bg-white">
+    <article className="flex justify-between items-center gap-y-2 rounded-md bg-white lg:bg-gray-50 lg:border lg:border-gray-100 lg:p-4">
       <div className="flex grow items-center gap-4">
         <div className="size-12 flex justify-center items-center bg-gray-100">
           Icon

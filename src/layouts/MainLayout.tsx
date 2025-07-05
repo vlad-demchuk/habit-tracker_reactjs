@@ -26,7 +26,7 @@ const MainLayout = () => {
         <Header onAddClick={handleAddFormOpen} />
 
         <div className="page-container">
-          <div className="flex flex-col gap-4 p-4 grow">
+          <div className="flex flex-col gap-4 p-4 grow bg-white lg:bg-gray-50">
             <Outlet />
           </div>
 

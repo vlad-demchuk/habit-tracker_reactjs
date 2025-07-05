@@ -13,6 +13,14 @@ const appRouter = createBrowserRouter([
         index: true,
         ...lazyRoute(() => import('@/pages/HomePage')),
       },
+      {
+        path: routePaths.history,
+        element: 'Not implemented yet',
+      },
+      {
+        path: routePaths.settings,
+        element: 'Not implemented yet',
+      },
     ],
   },
   {

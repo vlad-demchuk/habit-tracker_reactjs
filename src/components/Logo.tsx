@@ -1,21 +1,18 @@
 import { HTMLProps } from 'react';
+import { Link } from 'react-router';
 
-import { twMerge } from 'tailwind-merge';
+import { routePaths } from '@/routes/paths.ts';
 
 export const Logo = ({
   classname,
 }: {
   classname?: HTMLProps<HTMLHeadingElement>['className'];
 }) => {
-  // TODO: Make a link
   return (
-    <h1
-      className={twMerge(
-        'text-2xl font-bold leading-6 tracking-normal',
-        classname,
-      )}
-    >
-      Habit Tracker
-    </h1>
+    <Link to={routePaths.home} className={classname}>
+      <h1 className={'text-2xl font-bold leading-6 tracking-normal'}>
+        Habit Tracker
+      </h1>
+    </Link>
   );
 };

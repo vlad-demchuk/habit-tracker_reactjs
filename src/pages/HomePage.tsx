@@ -1,9 +1,7 @@
 import { lazy } from 'react';
-import { useSearchParams } from 'react-router';
-
-import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
 
 import { Habits } from '@/features/habits/components';
+import { useAddForm } from '@/features/habits/hooks';
 import { Streak } from '@/features/streak/components';
 
 import { useSelectedHabitStore } from '@/features/habits/state/store';
@@ -17,19 +15,10 @@ const DetailsSidebar = lazy(
 );
 
 const HomePage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
   const selectedHabit = useSelectedHabitStore((state) => state.selectedHabit);
   const unselectHabit = useSelectedHabitStore((state) => state.unselectHabit);
 
-  const isAdding =
-    searchParams.get(searchParamsKeys.modal) === searchParamsValues.newHabit;
-
-  const handleAddFormClose = () => {
-    const newSearchParams = new URLSearchParams(searchParams);
-    newSearchParams.delete(searchParamsKeys.modal);
-    setSearchParams(newSearchParams.toString());
-  };
+  const { isOpen, handleClose } = useAddForm({});
 
   const handleAddSubmit = () => ({});
 
@@ -40,8 +29,8 @@ const HomePage = () => {
       <Habits />
 
       <AddFormModal
-        isOpen={isAdding}
-        onClose={handleAddFormClose}
+        isOpen={isOpen}
+        onClose={handleClose}
         onSubmit={handleAddSubmit}
       />
 

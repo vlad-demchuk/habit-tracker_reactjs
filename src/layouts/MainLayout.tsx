@@ -1,8 +1,8 @@
-import { Outlet, useSearchParams } from 'react-router';
-
-import { searchParamsKeys, searchParamsValues } from '@/routes/paths.ts';
+import { Outlet } from 'react-router';
 
 import { Header, NavigationMenuLg, NavigationMenuSm } from '@/components';
+
+import { useAddForm } from '@/features/habits/hooks';
 
 const MainLayout = () => {
   // Use Route Protection if needed
@@ -10,23 +10,18 @@ const MainLayout = () => {
   // if (!isAuthenticated) {
   //   return <Navigate to="/login" state={{ pathname }} replace />;
   // }
-  const [, setSearchParams] = useSearchParams();
 
-  const handleAddFormOpen = () => {
-    setSearchParams({
-      [searchParamsKeys.modal]: searchParamsValues.newHabit,
-    });
-  };
+  const { handleOpen } = useAddForm({});
 
   return (
-    <div className="block lg:grid grid-cols-12">
+    <div className="block grid-cols-12 lg:grid">
       <NavigationMenuLg />
 
       <main className="col-[4/-1]">
-        <Header onAddClick={handleAddFormOpen} />
+        <Header onAddClick={handleOpen} />
 
         <div className="page-container">
-          <div className="flex flex-col gap-4 p-4 grow bg-white lg:bg-gray-50">
+          <div className="flex grow flex-col gap-4 bg-white p-4 lg:bg-gray-50">
             <Outlet />
           </div>
 

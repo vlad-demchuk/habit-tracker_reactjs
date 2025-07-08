@@ -1,3 +1,5 @@
+export { useAddForm } from '@/features/habits/hooks/useAddForm.ts';
+
 export { useHabits } from './useHabits.ts';
 export { useHabit } from './useHabit.ts';
 

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 type ButtonVariant = 'primary' | 'destructive';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends React.ComponentPropsWithoutRef<'button'> {
   variant?: ButtonVariant;
 }
 

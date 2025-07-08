@@ -24,3 +24,9 @@ export const navigationConfig = [
     icon: <GearIcon />,
   },
 ] as const;
+
+export const pathToTitle: Record<string, string> = {
+  [routePaths.home]: 'Dashboard',
+  [routePaths.history]: 'History',
+  [routePaths.settings]: 'Settings',
+} as const;

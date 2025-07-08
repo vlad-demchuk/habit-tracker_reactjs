@@ -11,7 +11,7 @@ export const CloseButton = ({
   return (
     <IconButton {...props} onClick={onClick}>
       <img
-        className="cursor-pointer hover:scale-125 transition-transform"
+        className="cursor-pointer transition-transform hover:scale-125"
         src={closeIcon}
         alt="Close"
       />

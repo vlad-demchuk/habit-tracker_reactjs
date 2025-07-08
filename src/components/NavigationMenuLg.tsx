@@ -1,16 +1,15 @@
-import { Logo } from '@/components/Logo.tsx';
-import { Menu } from '@/components/ui/Menu.tsx';
+import { Logo, Menu } from '@/components';
 
 import { navigationConfig } from '@/data/navigation';
 
 export const NavigationMenuLg = () => {
   return (
-    <nav className="hidden lg:block col-[1/4] border-r border-gray-200">
-      <header className="p-4 sticky top-0 border-b border-gray-200 bg-white">
+    <nav className="col-[1/4] hidden border-r border-gray-200 lg:block">
+      <header className="sticky top-0 border-b border-gray-200 bg-white p-4">
         <Logo />
       </header>
 
-      <section className="px-2 sticky top-15">
+      <section className="sticky top-15 p-2">
         <Menu menuItems={navigationConfig} />
       </section>
     </nav>

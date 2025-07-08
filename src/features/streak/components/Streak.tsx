@@ -6,11 +6,11 @@ import { IconButton } from '@/components';
 
 import streakDataMock from '@/data/mocks/streak.json';
 
+import expandIcon from '@/assets/expand-icon.svg';
+
 import { Card } from '@/features/streak/components/Card.tsx';
 
 import { Streak as IStreak } from '@/features/streak/types';
-
-import expandIcon from '../../../assets/expand-icon.svg';
 
 export const Streak = () => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -34,9 +34,9 @@ export const Streak = () => {
   }, []);
 
   return (
-    <section className="mb-2 bg-white lg:bg-gray-50 rounded-lg">
-      <header className="flex justify-between items-center">
-        <h2 className="flex items-center text-2xl font-semibold leading-6 tracking-normal">
+    <section className="mb-2 rounded-lg bg-white lg:bg-gray-50">
+      <header className="flex items-center justify-between">
+        <h2 className="flex items-center text-2xl leading-6 font-semibold tracking-normal">
           Streaks
         </h2>
 
@@ -44,7 +44,7 @@ export const Streak = () => {
           <IconButton onClick={() => setIsExpanded(!isExpanded)}>
             <img
               className={clsx(
-                'cursor-pointer hover:scale-125 transition-transform',
+                'cursor-pointer transition-transform hover:scale-125',
                 isExpanded && 'rotate-180',
               )}
               src={expandIcon}
@@ -56,13 +56,13 @@ export const Streak = () => {
         )}
       </header>
 
-      <div className="relative border-t-gray-200 overflow-hidden">
+      <div className="relative overflow-hidden border-t-gray-200">
         <div
           className={clsx(
-            'transition-all duration-500 ease-in-out origin-top',
+            'origin-top transition-all duration-500 ease-in-out',
             isExpanded
-              ? 'max-h-42 mt-4 opacity-100 scale-y-100'
-              : 'max-h-0 opacity-0 scale-y-0',
+              ? 'mt-4 max-h-42 scale-y-100 opacity-100'
+              : 'max-h-0 scale-y-0 opacity-0',
           )}
         >
           <div className="flex justify-evenly gap-4">

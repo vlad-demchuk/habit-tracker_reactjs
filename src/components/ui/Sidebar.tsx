@@ -40,8 +40,8 @@ export const Sidebar = ({
 
   const content = (
     <div className="aside-content-wrapper p-6">
-      <header className="flex justify-between mb-3">
-        <h3 className="font-semibold text-3xl">{title}</h3>
+      <header className="mb-3 flex justify-between">
+        <h3 className="text-3xl font-semibold">{title}</h3>
         <CloseButton onClick={onClose} />
       </header>
 

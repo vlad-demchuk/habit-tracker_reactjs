@@ -12,12 +12,12 @@ export const Card = ({ title, value, classname }: Props) => {
   return (
     <div
       className={twMerge(
-        'p-4 border bg-white border-gray-300 rounded-md basis-1/2 sm:basis-1/3 min-h-28 sm:min-h-30',
+        'min-h-28 basis-1/2 rounded-md border border-gray-300 bg-white p-4 sm:min-h-30 sm:basis-1/3',
         classname,
       )}
     >
-      <h4 className="font-medium text-base mb-2">{title}</h4>
-      <p className="font-bold text-2xl leading-8">{value}</p>
+      <h4 className="mb-2 text-base font-medium">{title}</h4>
+      <p className="text-2xl leading-8 font-bold">{value}</p>
     </div>
   );
 };

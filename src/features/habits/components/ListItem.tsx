@@ -14,9 +14,9 @@ export const ListItem = ({ habit, onHabitSelect }: Props) => {
   const progress = getProgressBarValue(streak);
 
   return (
-    <article className="flex justify-between items-center gap-y-2 rounded-md bg-white lg:bg-gray-50 lg:border lg:border-gray-100 lg:p-4">
+    <article className="flex items-center justify-between gap-y-2 rounded-md bg-white lg:border lg:border-gray-100 lg:bg-gray-50 lg:p-4">
       <div className="flex grow items-center gap-4">
-        <div className="size-12 flex justify-center items-center bg-gray-100">
+        <div className="flex size-12 items-center justify-center bg-gray-100">
           Icon
         </div>
 
@@ -24,16 +24,16 @@ export const ListItem = ({ habit, onHabitSelect }: Props) => {
           <h4 className="text-base font-medium">{title}</h4>
 
           <div>
-            <div className="mb-1 w-full h-1 bg-gray-200 rounded-full">
+            <div className="mb-1 h-1 w-full rounded-full bg-gray-200">
               <div
-                className="h-full bg-black rounded-full"
+                className="h-full rounded-full bg-black"
                 style={{ width: `${progress}%` }}
               />
             </div>
 
             <div className="flex justify-between">
-              <div className="flex gap-1 place-items-center">
-                <span className="text-sm text-gray-500 font-normal">
+              <div className="flex place-items-center gap-1">
+                <span className="text-sm font-normal text-gray-500">
                   7 days
                 </span>
               </div>
@@ -43,10 +43,10 @@ export const ListItem = ({ habit, onHabitSelect }: Props) => {
       </div>
 
       <div className="flex gap-1">
-        <IconButton className="rounded-full size-9">✔</IconButton>
+        <IconButton className="size-9 rounded-full">✔</IconButton>
         <IconButton
           onClick={() => onHabitSelect(habit)}
-          className="rounded-full flex items-center justify-center size-9"
+          className="flex size-9 items-center justify-center rounded-full"
         >
           ...
         </IconButton>

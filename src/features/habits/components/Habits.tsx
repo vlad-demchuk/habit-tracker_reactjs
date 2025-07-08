@@ -16,8 +16,8 @@ export const Habits = () => {
   );
 
   return (
-    <section className="grid gap-y-6 lg:gap-y-4 lg:bg-white lg:border lg:border-gray-300 lg:rounded-md lg:p-6">
-      <h2 className="text-2xl font-semibold leading-6 tracking-normal">
+    <section className="grid gap-y-6 lg:gap-y-4 lg:rounded-md lg:border lg:border-gray-300 lg:bg-white lg:p-6">
+      <h2 className="text-2xl leading-6 font-semibold tracking-normal">
         Habits
       </h2>
 

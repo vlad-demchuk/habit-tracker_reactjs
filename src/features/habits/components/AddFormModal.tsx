@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import { Button } from '@/components';
-import { Modal } from '@/components/ui/Modal.tsx';
+import { Button, Modal } from '@/components';
 
 interface Props {
   isOpen: boolean;
@@ -38,7 +37,7 @@ const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
   return (
     <Modal isOpen={isOpen} closeModal={onClose} title="Add New Habit">
       <form
-        className="w-[60vw] flex flex-col gap-4"
+        className="flex w-[60vw] flex-col gap-4"
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit();
@@ -53,7 +52,7 @@ const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
             type="text"
             name="title"
             id="title"
-            className="border-1 p-1 border-gray-300 rounded-lg focus:outline-none focus:border-transparent focus:ring"
+            className="rounded-lg border-1 border-gray-300 p-1 focus:border-transparent focus:ring focus:outline-none"
           />
         </div>
 
@@ -63,11 +62,11 @@ const AddFormModal = ({ isOpen, onClose, onSubmit }: Props) => {
             onChange={handleChange}
             name="description"
             id="description"
-            className="min-h-20 p-1 border-1 border-gray-300 rounded-lg focus:outline-none focus:border-transparent focus:ring"
+            className="min-h-20 rounded-lg border-1 border-gray-300 p-1 focus:border-transparent focus:ring focus:outline-none"
           />
         </div>
 
-        <section className="flex gap-2 justify-end">
+        <section className="flex justify-end gap-2">
           <Button
             variant="destructive"
             onClick={() => {

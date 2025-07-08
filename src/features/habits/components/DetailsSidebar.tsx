@@ -1,5 +1,4 @@
-import { Button } from '@/components/ui/Button.tsx';
-import { Sidebar } from '@/components/ui/Sidebar.tsx';
+import { Button, Sidebar } from '@/components';
 
 import { HabitDetailsSidebarProps } from '@/types/sidebar.types.ts';
 
@@ -16,17 +15,17 @@ const DetailsSidebar = ({
     <Sidebar isOpen={isOpen} onClose={onClose} title={title}>
       <div className="grid gap-y-4">
         <section>
-          <h4 className="uppercase text-gray-500 text-sm">Description</h4>
+          <h4 className="text-sm text-gray-500 uppercase">Description</h4>
           <p className="text-base">{description}</p>
         </section>
 
         <section>
-          <h4 className="uppercase text-gray-500 text-sm">Created</h4>
+          <h4 className="text-sm text-gray-500 uppercase">Created</h4>
           <p className="text-base">{createdAt}</p>
         </section>
 
         <section>
-          <h4 className="uppercase text-gray-500 text-sm">Streak</h4>
+          <h4 className="text-sm text-gray-500 uppercase">Streak</h4>
           <p className="text-base">{streak}</p>
         </section>
 

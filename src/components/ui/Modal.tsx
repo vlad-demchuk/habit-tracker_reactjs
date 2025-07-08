@@ -37,10 +37,10 @@ export const Modal = ({ isOpen, closeModal, title, children }: ModalProps) => {
     <dialog
       ref={ref}
       onCancel={closeModal}
-      className="fixed top-1/2 -translate-y-1/2 mx-auto p-6 rounded-lg opacity-0 animate-[fadein_.2s_ease-in_forwards]"
+      className="fixed top-1/2 mx-auto -translate-y-1/2 animate-[fadein_.2s_ease-in_forwards] rounded-lg p-6 opacity-0"
     >
-      <header className="flex justify-between mb-4">
-        <h3 className="font-semibold text-3xl">{title}</h3>
+      <header className="mb-4 flex justify-between">
+        <h3 className="text-3xl font-semibold">{title}</h3>
         <CloseButton onClick={closeModal} />
       </header>
 

@@ -1,4 +1,4 @@
-# 🎯 Habit Tracker App
+# 🎯 Habit Tracker App (in progress, general structure is ready)
 
 A modern, user-friendly habit tracking application built with React and TypeScript. Track your daily habits, build streaks, and achieve your personal goals with an intuitive interface.
 
